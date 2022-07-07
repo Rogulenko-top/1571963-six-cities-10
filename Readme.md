@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Антон Рогуленко](https://up.htmlacademy.ru/react/10/user/1571963).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий Железцов](https://up.htmlacademy.ru/profession/fullstack/2/ecmascript/17/user/983299).
 
 ---
 
