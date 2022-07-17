@@ -1,4 +1,4 @@
-import React from 'react';
+import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 
@@ -11,9 +11,9 @@ const Offers = {
 };
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <App
       offersCount = {Offers.COUNT_OFFERS}
     />
-  </React.StrictMode>,
+  </StrictMode>,
 );
