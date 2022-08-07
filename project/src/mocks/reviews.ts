@@ -7,7 +7,7 @@ export const reviews: Review[] = [
     id: 1,
     rating: 4,
     user: {
-      avatarUrl: 'img/1.png',
+      avatarUrl: 'https://10.react.pages.academy/static/avatar/9.jpg',
       id: 1,
       isPro: false,
       name: 'Oliver.conner'
@@ -19,7 +19,7 @@ export const reviews: Review[] = [
     id: 2,
     rating: 5,
     user: {
-      avatarUrl: 'img/2.png',
+      avatarUrl: 'https://10.react.pages.academy/static/avatar/10.jpg',
       id: 2,
       isPro: true,
       name: 'Anatoly.conner'
@@ -31,7 +31,7 @@ export const reviews: Review[] = [
     id: 3,
     rating: 4,
     user: {
-      avatarUrl: 'img/2.png',
+      avatarUrl: 'https://10.react.pages.academy/static/avatar/4.jpg',
       id: 3,
       isPro: false,
       name: 'Anton.conner'
@@ -43,7 +43,7 @@ export const reviews: Review[] = [
     id: 4,
     rating: 5,
     user: {
-      avatarUrl: 'img/2.png',
+      avatarUrl: 'https://10.react.pages.academy/static/avatar/5.jpg',
       id: 4,
       isPro: true,
       name: 'Vadim.conner'
