@@ -1,15 +1,15 @@
-import Offer from '../../types/offer';
+import { Offer } from '../../types/offer';
 
 type CardsProps = {
   offer: Offer;
   onMouseOver: () => void;
 }
 
-function Cards({offer, onMouseOver}:CardsProps): JSX.Element {
-  const {isPremium, isFavorite, previewImage, price, rating, type, title} = offer;
+function Cards({ offer, onMouseOver }: CardsProps): JSX.Element {
+  const { isPremium, isFavorite, previewImage, price, rating, type, title } = offer;
   const ratingPercent = 100 / 5 * rating;
   const formattedType = type[0].toUpperCase() + type.slice(1);
-  return(
+  return (
     <article className="cities__card place-card" onMouseOver={onMouseOver}>
       {isPremium ?
         <div className="place-card__mark">
@@ -17,7 +17,7 @@ function Cards({offer, onMouseOver}:CardsProps): JSX.Element {
         </div> : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt={type}/>
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt={type} />
         </a>
       </div>
       <div className="place-card__info">

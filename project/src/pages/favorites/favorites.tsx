@@ -1,15 +1,15 @@
-import {Fragment} from 'react';
+import { Fragment } from 'react';
 
-import Offer from '../../types/offer';
+import { Offers } from '../../types/offer';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import FooterLogo from '../../components/footer-logo/footer-logo';
 import FavoriteOfferCard from '../../components/favorite-offer-card/favorite-offer-card';
 
 type FavoritesProps = {
-  offers: Offer[];
+  offers: Offers;
 }
 
-function Favorites({offers}: FavoritesProps): JSX.Element {
+function Favorites({ offers }: FavoritesProps): JSX.Element {
   const offersOfAmsterdam = offers.filter((element) => element.city.name === 'Amsterdam' && element.isFavorite);
   const offerOfCologne = offers.filter((element) => element.city.name === 'Cologne' && element.isFavorite);
   return (
@@ -23,7 +23,7 @@ function Favorites({offers}: FavoritesProps): JSX.Element {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <HeaderLogo/>
+                <HeaderLogo />
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
@@ -81,7 +81,7 @@ function Favorites({offers}: FavoritesProps): JSX.Element {
           </div>
         </main>
         <footer className="footer container">
-          <FooterLogo/>
+          <FooterLogo />
         </footer>
       </div>
     </Fragment>
