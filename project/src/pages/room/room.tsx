@@ -1,7 +1,35 @@
-import {Fragment} from 'react';
-import {ReviewSection} from '../../components/review-section/review-section';
+import { Fragment } from 'react';
+import { ReviewSection } from '../../components/review-section/review-section';
+import HeaderLogo from '../../components/header-logo/header-logo';
+import { Offers } from '../../types/offer';
+import { Review } from '../../types/review';
+import { useParams } from 'react-router-dom';
+import PageNotFound from '../../components/page-not-found/page-not-found';
+import { ImagePropertyCount } from '../../const';
+import { getCountStars, capitalizeFirstLetter } from '../../utils/utils';
+import PropertyImage from '../../components/property-image/property-image';
+import OffersList from '../../components/offers-list/offers-list';
 
-function Room(): JSX.Element {
+type RoomProps = {
+  offers: Offers;
+  nearPlacesOffers: Offers;
+  reviews: Review[];
+}
+
+function Room({ offers, nearPlacesOffers, reviews }: RoomProps): JSX.Element {
+  const { id } = useParams();
+  const numId = Number(id);
+  const offer = offers.find((item) => item.id === numId);
+  const isNaN = !numId;
+  const isNotOffer = !offer;
+
+  if (isNaN || isNotOffer) {
+    return <PageNotFound />;
+  }
+
+  const images = offer.images.slice(ImagePropertyCount.Start, ImagePropertyCount.End);
+  const countStars = getCountStars(offer.rating);
+  const offerType = capitalizeFirstLetter(offer.type);
   return (
     <Fragment>
       <div style={{ display: 'none' }}>
@@ -13,9 +41,7 @@ function Room(): JSX.Element {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="main.html">
-                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-                </a>
+                <HeaderLogo />
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
@@ -42,24 +68,7 @@ function Room(): JSX.Element {
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/room.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-                </div>
+                {images.map((src) => <PropertyImage key={src} src={src} />)}
               </div>
             </div>
             <div className="property__container container">
@@ -80,20 +89,14 @@ function Room(): JSX.Element {
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{ width: '80%' }}></span>
+                    <span style={{ width: countStars }}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="property__rating-value rating__value">4.8</span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    Apartment
-                  </li>
-                  <li className="property__feature property__feature--bedrooms">
-                    3 Bedrooms
-                  </li>
-                  <li className="property__feature property__feature--adults">
-                    Max 4 adults
+                    {offerType}
                   </li>
                 </ul>
                 <div className="property__price">
@@ -157,7 +160,7 @@ function Room(): JSX.Element {
                     </p>
                   </div>
                 </div>
-                <ReviewSection/>
+                <ReviewSection />
               </div>
             </div>
             <section className="property__map map"></section>
@@ -166,6 +169,10 @@ function Room(): JSX.Element {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
+                <OffersList
+                  offers={nearPlacesOffers}
+                // cardClass={PageCardClass.Property}
+                />
                 <article className="near-places__card place-card">
                   <div className="near-places__image-wrapper place-card__image-wrapper">
                     <a href="#">

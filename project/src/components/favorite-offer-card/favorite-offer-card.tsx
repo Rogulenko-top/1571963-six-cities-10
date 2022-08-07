@@ -1,11 +1,11 @@
-import Offer from '../../types/offer';
+import { Offer } from '../../types/offer';
 import { Link } from 'react-router-dom';
 
 type FavoriteOfferCardProps = {
   offer: Offer;
 }
 
-function FavoriteOfferCard ({ offer }: FavoriteOfferCardProps): JSX.Element {
+function FavoriteOfferCard({ offer }: FavoriteOfferCardProps): JSX.Element {
   const { isPremium, isFavorite, previewImage, price, type, rating, title, id } = offer;
   const ratingPercent = 100 / 5 * rating;
   const formattedType = type[0].toUpperCase() + type.slice(1);

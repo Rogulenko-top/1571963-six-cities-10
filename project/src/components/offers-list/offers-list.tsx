@@ -1,17 +1,19 @@
-import Offer from '../../types/offer';
+import { Offer } from '../../types/offer';
 import Cards from '../cards/cards';
 import FormFilter from '../filter-form/filter-form';
 import { useState } from 'react';
+import Map from '../../components/map/map';
+import { City } from '../../mocks/offers';
 
 type OffersListProps = {
   offers: Offer[];
 }
 
-function OffersList ({offers}:OffersListProps): JSX.Element {
+function OffersList({ offers }: OffersListProps): JSX.Element {
   const [currentCardId, setCardId] = useState<number>(0);
   const offerList = offers.map((element) => {
     const keyValue = `${element.id}-${element.title}`;
-    return <Cards key={keyValue.toString()} offer={element} onMouseOver={() => setCardId(element.id)}/>;
+    return <Cards key={keyValue.toString()} offer={element} onMouseOver={() => setCardId(element.id)} />;
   });
 
   return (
@@ -26,7 +28,10 @@ function OffersList ({offers}:OffersListProps): JSX.Element {
           </div>
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map"></section>
+          <Map
+            city={City}
+            offers={offers}
+          />
         </div>
       </div>
     </div>
