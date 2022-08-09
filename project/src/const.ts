@@ -69,3 +69,8 @@ export const ButtonSize = {
 
 export const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
   'August', 'September', 'October', 'November', 'December'] as const;
+
+export enum MapСategory {
+  Property = 'property__map',
+  Cities = 'cities__map',
+}
