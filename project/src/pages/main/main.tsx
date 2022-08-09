@@ -1,6 +1,6 @@
 import OffersList from '../../components/offers-list/offers-list';
 import { Offers } from '../../types/offer';
-import { PageCardСategory } from '../../const';
+import { PageCardСategory, MapСategory } from '../../const';
 import Map from '../../components/map/map';
 import { City } from '../../mocks/offers';
 import HeaderLogo from '../../components/header-logo/header-logo';
@@ -113,7 +113,7 @@ function Main({ offersCount, offers }: MainProps): JSX.Element {
             </section>
 
             <div className="cities__right-section">
-              <Map
+              <Map className={MapСategory.Cities}
                 city={City}
                 offers={offers}
               />

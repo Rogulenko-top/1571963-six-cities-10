@@ -5,13 +5,15 @@ import { Offers } from '../../types/offer';
 import { Review } from '../../types/review';
 import { useParams } from 'react-router-dom';
 import PageNotFound from '../../components/page-not-found/page-not-found';
-import { ButtonСategory, ImagePropertyCount, PageCardСategory } from '../../const';
+import { ButtonСategory, ImagePropertyCount, PageCardСategory, MapСategory } from '../../const';
 import { getCountStars, capitalizeFirstLetter } from '../../utils/utils';
 import PropertyImage from '../../components/property-image/property-image';
 import OffersList from '../../components/offers-list/offers-list';
 import MarkButton from '../../components/mark-button/mark-button';
 import UserReview from '../../components/user-review/user-review';
 import PropertyGoods from '../../components/property-goods/property-goods';
+import Map from '../../components/map/map';
+import { City } from '../../mocks/offers';
 
 type RoomProps = {
   offers: Offers;
@@ -162,8 +164,7 @@ function Room({ offers, nearPlacesOffers, reviews }: RoomProps): JSX.Element {
 
               </div>
             </div>
-
-            <section className="property__map map"></section>
+            <Map className={MapСategory.Property} city={City} offers={nearPlacesOffers} />
           </section>
 
 

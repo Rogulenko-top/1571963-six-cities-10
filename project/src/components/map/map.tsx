@@ -1,13 +1,14 @@
 import { Icon, Marker } from 'leaflet';
 import { useEffect, useRef } from 'react';
 import { IconParameter, UrlMarker } from '../../const';
-import { City, Offer } from '../../types/offer';
+import { City, Offers } from '../../types/offer';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 
 type MapProps = {
   city: City;
-  offers: Offer[];
+  offers: Offers;
+  className: string;
 };
 
 const defaultCustomIcon = new Icon({
@@ -17,7 +18,7 @@ const defaultCustomIcon = new Icon({
 });
 
 function Map(props: MapProps): JSX.Element {
-  const { city, offers } = props;
+  const { city, offers, className } = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -40,9 +41,7 @@ function Map(props: MapProps): JSX.Element {
   }, [map, offers]);
 
   return (
-    <section className="cities__map map"
-      ref={mapRef}
-    >
+    <section className={`map ${className}`} ref={mapRef}>
     </section>
   );
 }
