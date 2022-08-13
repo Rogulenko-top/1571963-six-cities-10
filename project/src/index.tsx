@@ -1,24 +1,25 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { offers, nearPlacesOffers } from './mocks/offers';
+import { nearPlacesOffers, offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
+import { Provider } from 'react-redux';
+import { store } from './store';
+import { setOffers } from './store/action';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-const Offers = {
-  COUNT_OFFERS: 5,
-};
+store.dispatch(setOffers(offers));
 
 root.render(
   <StrictMode>
-    <App
-      offersCount={Offers.COUNT_OFFERS}
-      offers={offers}
-      nearPlacesOffers={nearPlacesOffers}
-      reviews={reviews}
-    />
+    <Provider store={store}>
+      <App
+        nearPlacesOffers={nearPlacesOffers}
+        reviews={reviews}
+      />
+    </Provider>
   </StrictMode>,
 );
