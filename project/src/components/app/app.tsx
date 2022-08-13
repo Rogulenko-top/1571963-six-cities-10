@@ -9,19 +9,26 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import PrivateRoute from '../private-route/private-route';
 import { Offers } from '../../types/offer';
 import { Review } from '../../types/review';
+import { useAppDispatch } from '../../hooks';
+import { setOffers } from '../../store/action';
+import { offers } from '../../mocks/offers';
 
 type AppProps = {
-  offersCount: number;
-  offers: Offers;
+
   nearPlacesOffers: Offers;
   reviews: Review[];
 }
 
-function App({ offersCount, offers, nearPlacesOffers, reviews }: AppProps): JSX.Element {
+function App({ nearPlacesOffers, reviews }: AppProps): JSX.Element {
+
+  const dispatch = useAppDispatch();
+
+  dispatch(setOffers(offers));
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={<Main offersCount={offersCount} offers={offers} />} />
+        <Route path={AppRoute.Root} element={<Main />} />
         <Route path={AppRoute.Login} element={<Login />} />
         <Route path={AppRoute.Favorites} element={
           <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>

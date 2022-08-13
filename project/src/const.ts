@@ -1,3 +1,5 @@
+import { Icon } from 'leaflet';
+
 export enum AppRoute {
   Login = '/login',
   Favorites = '/favorites',
@@ -74,3 +76,28 @@ export enum MapСategory {
   Property = 'property__map',
   Cities = 'cities__map',
 }
+
+export enum City {
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+  Amsterdam = 'Amsterdam',
+}
+
+export const city = [
+  City.Cologne,
+  City.Hamburg,
+  City.Dusseldorf,
+  City.Brussels,
+  City.Amsterdam,
+  City.Paris,
+] as const;
+
+export const defaultCustomIcon = new Icon({
+  iconUrl: UrlMarker.Default,
+  iconSize: [IconParameter.Size.x, IconParameter.Size.y],
+  iconAnchor: [IconParameter.Anchor.x, IconParameter.Anchor.y],
+});
+
